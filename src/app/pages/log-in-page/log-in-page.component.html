@@ -1,0 +1,35 @@
+<body>
+    <form class="form" [formGroup]='formLogin'>
+        <div class="label title">{{title}}</div>
+
+        <span class="input-span">
+           
+            <input type="email" name="Email" formControlName="Email" placeholder="Ingrese email">
+            <div class="label" *ngIf="formLogin.get('Email')?.touched && formLogin.get('Email')?.errors?.['required']"> 
+                <div class="alert">Ingrese un mail.</div>
+            </div>
+        </span>
+
+        <span class="input-span">
+           
+            <input type="password" name="password" formControlName="Password" placeholder="Ingrese contraseña" >
+            <div class="label" *ngIf="formLogin.get('Password')?.touched && formLogin.get('Password')?.errors?.['required']"> 
+                <div class="alert">Ingrese una contraseña.</div>
+            </div>
+        </span>
+
+        <!-- <span class="span">
+            <a href="#">¿Olvidó su contraseña?</a>
+        </span> -->
+
+        
+        <input class="submit" type="submit" value="Iniciar sesión" (click)="login()">
+
+        <!-- [disabled]="formLogin.invalid" agregar al input submit para bloquear el boton si no se ingresan datos -->
+
+        <span class="span">No tiene una cuenta?
+            <a routerLink="/SignUp"> Registrese!</a>
+        </span>
+        
+    </form>
+</body>
