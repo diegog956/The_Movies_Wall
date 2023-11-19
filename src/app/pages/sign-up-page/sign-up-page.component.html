@@ -1,0 +1,79 @@
+<body>
+    <form class="form" [formGroup]="formLogin">
+
+        <div class="label title"> {{title}} </div>
+                
+        <span class="input-span">
+            <input type="text" formControlName="Name" placeholder="Nombre">
+        </span>
+        <div class="label" *ngIf="formLogin.get('Name')?.touched && formLogin.get('Name')?.errors?.['required']"> 
+            <div class="alert">Este campo es obligatorio.</div>
+        </div>
+
+        <span class="input-span">
+            <input type="email" formControlName="Email" placeholder="Email">
+        </span>
+        <div class="label" *ngIf="formLogin.get('Email')?.touched && formLogin.get('Email')?.errors?.['required']"> 
+            <div class="alert">Este campo es obligatorio.</div>
+        </div>
+        <div class="label" *ngIf="formLogin.get('Email')?.touched && formLogin.get('Email')?.errors?.['email']"> 
+            <div class="alert">Ingrese un email valido.</div>
+        </div>
+
+        <span class="input-span">
+            <input type="password" formControlName="Password" placeholder="Contraseña (Minimo 6 caracteres)">
+        </span>
+        <div class="label" *ngIf="formLogin.get('Password')?.touched && formLogin.get('Password')?.errors?.['required']"> 
+            <div class="alert">Este campo es obligatorio.</div>
+        </div>
+        <div class="label" *ngIf="formLogin.get('Password')?.touched && formLogin.get('Password')?.errors?.['minlength']"> 
+            <div class="alert">La contraseña debe tener al menos 6 caracteres.</div>
+        </div>
+
+        <span class="input-span">
+            <input type="date" formControlName="BirthDate" placeholder="Fecha de Nacimiento" max="{{getTodayDate()}}">
+        </span>
+        <div class="label" *ngIf="formLogin.get('BirthDate')?.touched && formLogin.get('BirthDate')?.errors?.['required']"> 
+            <div class="alert">Este campo es obligatorio.</div>
+        </div>
+
+        <span class="input-span">
+            <select formControlName="Country">
+                <option disabled selected value="">Selecciona un país</option>
+                <option value="Argentina">Argentina</option>
+                <option value="Brasil">Brasil</option>
+                <option value="Chile">Chile</option>
+                <option value="España">España</option>
+                <option value="Uruguay">Uruguay</option>
+                <option value="Otro">Otro</option>
+            </select>
+        </span>
+        <div class="label" *ngIf="formLogin.get('Country')?.touched && formLogin.get('Country')?.errors?.['required']"> 
+            <div class="alert">Este campo es obligatorio.</div>
+        </div>
+
+        <div class="form-group">
+            <input type="checkbox" formControlName="Terms" class="checkbox">
+            <label for="Terms" class="label">Acepto <a class='BlueA' href="https://www.termsandconditionsgenerator.com/live.php?token=ssKL7iXgZ7ii3HEEQ8VjmArw8X4HXVLg">términos y condiciones.</a>
+
+            </label>
+        </div>
+        <div class="label" *ngIf="formLogin.get('Terms')?.touched && formLogin.get('Terms')?.errors?.['required']"> 
+            <div class="alert">Debe aceptar los terminos y condiciones.</div>
+        </div>
+
+
+
+        <input class="submit" type="submit" value="Registrarte" (click)="SignUp()" [disabled]="formLogin.invalid">
+
+        <span class="span">¿Ya tiene una cuenta?
+            <a routerLink="/LogIn"> Ingrese</a>
+        </span>
+
+       
+        
+        
+        
+
+    </form>
+</body>
