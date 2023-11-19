@@ -1,0 +1,4 @@
+[build]
+  pre = "npm run backend"
+  command = "npm run build"
+  publish = "dist"
