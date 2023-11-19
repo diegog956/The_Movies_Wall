@@ -1,0 +1,288 @@
+.body {
+  background-color: black;
+  min-height: 96vh;
+  min-width: 200vh;
+  font-family: sans-serif;
+  font-size: 17px;
+}
+
+
+.layout {
+
+  min-width: 200vh;
+  min-height: 96vh;
+  position: relative;
+  background-image: url('https://w0.peakpx.com/wallpaper/900/292/HD-wallpaper-black-bricks-wall-android-iphone-iphone12-samsung.jpg');
+  background-repeat: repeat;
+  background-size: contain;
+  display: grid;
+  grid:
+    "leftside rightside" 1fr / 1fr 478px;
+  gap: 8px;
+}
+
+.leftside {
+  width: 100%;
+  height: 96vh;
+  grid-area: leftside;
+  font-family: sans-serif;
+  margin: 20px;
+  
+}
+
+.rightside {
+
+  grid-area: rightside;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 96vh;
+  
+}
+
+.rightside img {
+  width: 438px;
+  height: 658px;
+  border-radius: 10px;
+  position: relative;
+  margin-top: 3px;
+  max-width: 100%;
+  max-height: 100%;
+
+}
+
+p {
+  color: #fff;
+  
+}
+p img{
+  margin-right: 5px;
+}
+
+h1 {
+  color: #fff;
+  border-bottom: 2px solid white;
+  display: inline-block;
+  width: 85%;
+  margin-left: 20px;
+  font-size: 25px;
+
+}
+
+.iframe-container {
+  display: flex;
+  align-items: center;
+  margin-left: 200px;
+  margin-top: 3%;
+  position: relative;
+  /* Añadido */
+
+
+}
+
+
+.movie-info {
+  height: auto;
+  width: 90%;
+  position: relative;
+  margin-left: 60px;
+  hyphens: auto;
+  
+}
+
+.movie-info img {
+  height: 16px;
+  width: 16px;
+
+}
+
+
+
+.loader {
+
+  position: relative;
+  width: 54px;
+  height: 54px;
+  border-radius: 10px;
+}
+
+.loader div {
+  width: 8%;
+  height: 24%;
+  background: rgb(128, 128, 128);
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  opacity: 0;
+  border-radius: 50px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  animation: fade458 1s linear infinite;
+}
+
+@keyframes fade458 {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0.25;
+  }
+}
+
+
+.loader-container {
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  align-self: center;
+  height: 100%;
+  width: 80%;
+
+}
+
+.loader-container-II {
+
+  display: flex;
+  align-items: center;
+  margin-left: 215px;
+  margin-top: 16%;
+  position: relative;
+}
+
+.loader .bar1 {
+  transform: rotate(0deg) translate(0, -130%);
+  animation-delay: 0s;
+}
+
+.loader .bar2 {
+  transform: rotate(30deg) translate(0, -130%);
+  animation-delay: -1.1s;
+}
+
+.loader .bar3 {
+  transform: rotate(60deg) translate(0, -130%);
+  animation-delay: -1s;
+}
+
+.loader .bar4 {
+  transform: rotate(90deg) translate(0, -130%);
+  animation-delay: -0.9s;
+}
+
+.loader .bar5 {
+  transform: rotate(120deg) translate(0, -130%);
+  animation-delay: -0.8s;
+}
+
+.loader .bar6 {
+  transform: rotate(150deg) translate(0, -130%);
+  animation-delay: -0.7s;
+}
+
+.loader .bar7 {
+  transform: rotate(180deg) translate(0, -130%);
+  animation-delay: -0.6s;
+}
+
+.loader .bar8 {
+  transform: rotate(210deg) translate(0, -130%);
+  animation-delay: -0.5s;
+}
+
+.loader .bar9 {
+  transform: rotate(240deg) translate(0, -130%);
+  animation-delay: -0.4s;
+}
+
+.loader .bar10 {
+  transform: rotate(270deg) translate(0, -130%);
+  animation-delay: -0.3s;
+}
+
+.loader .bar11 {
+  transform: rotate(300deg) translate(0, -130%);
+  animation-delay: -0.2s;
+}
+
+.loader .bar12 {
+  transform: rotate(330deg) translate(0, -130%);
+  animation-delay: -0.1s;
+}
+
+.btn-fav-container {
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+ 
+}
+
+.btn-fav-container-btn {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  width: 20%;
+}
+
+
+.btn {
+
+  --color: rgb(10, 25, 30);
+  --color2: #FDFD96;
+  padding: 0.2em 0.7em;
+  background-color: transparent;
+  border-radius: 6px;
+  border: .3px solid var(--color);
+  transition: .5s;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  background-color: #FADA28;
+  z-index: 1;
+  font-weight: 600;
+  font-size: 17px;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  color: rgb(10, 25, 30);
+}
+
+.btn::after,
+.btn::before {
+  content: '';
+  display: block;
+  height: 100%;
+  width: 100%;
+  transform: skew(90deg) translate(-50%, -50%);
+  position: absolute;
+  inset: 50%;
+  left: 25%;
+  z-index: -1;
+  transition: none;
+  background-color: rgb(10, 25, 30);
+}
+
+.btn::before {
+  
+  transform: skew(90deg) rotate(180deg) translate(-50%, -50%);
+}
+
+
+
+.btn:active {
+  filter: brightness(.7);
+  transform: scale(.98);
+  transform: translateY(8px)
+}
+
+.volver-btn-container {
+ 
+  position: absolute;
+  width: 20%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  left: 84%;
+  
+}
+
