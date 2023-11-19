@@ -56,7 +56,7 @@ export class DataAPIService {
     endYear: '2022',
     titleType: 'movie',
     limit: '21',
-    list: 'top_boxoffice_200'
+    list: 'most_pop_movies'
     };
 
     
