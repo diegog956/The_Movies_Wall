@@ -1,0 +1,547 @@
+/*Layout completo*/
+.body {
+
+  width: auto;
+  height: 100%;
+  min-height: 97vh;
+  position: relative;
+  background-image: url('https://w0.peakpx.com/wallpaper/900/292/HD-wallpaper-black-bricks-wall-android-iphone-iphone12-samsung.jpg');
+
+  background-repeat: repeat;
+  /* background-size: contain; */
+
+  background-attachment: scroll;
+  display: grid;
+
+  grid:
+    "header header header"
+    "leftSide body rightSide"
+    "footer footer footer";
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 16% 67% 17%;
+
+}
+
+
+.header {
+  height: 94px;
+  grid-area: header;
+  border-bottom: 2px solid white;
+
+  font-weight: 600;
+
+  color: #fff;
+  z-index: 1;
+  overflow: hidden;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* background-image: url(https://i.imgur.com/Ak1CG50.png); */
+
+  background-attachment: scroll;
+  background-size: 1480px 90px;
+  position: relative;
+  background-repeat: no-repeat;
+}
+
+
+
+
+.leftSide {
+
+  grid-area: leftSide;
+
+}
+
+/*Donde van las peliculas*/
+
+.section {
+
+  height: auto;
+  padding: 15px;
+  grid-area: body;
+  display: flex;
+  flex: 1;
+  background-repeat: repeat;
+  position: relative;
+}
+
+.rightSide {
+
+  grid-area: rightSide;
+  text-align: left;
+
+}
+
+.footer {
+
+  min-height: 80px;
+  grid-area: footer;
+  border-top: 2px solid white;
+}
+
+
+/*Titulo de Genero*/
+
+h2 {
+  color: white;
+  font-family: sans-serif;
+  font-size: 24px;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  margin-top: 35px ;
+
+}
+
+.h3container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-top: 50px;
+  position: relative;
+  align-items: flex-start;
+  margin-left: 26%;
+  margin-bottom: 100px;
+}
+
+h3 {
+  color: white;
+  font-family: sans-serif;
+  font-size: 24px;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  margin-top: 35px;
+  text-align: center; /* Centra el texto horizontalmente */
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centra el texto verticalmente */
+}
+
+/*Titulo en Header*/
+
+h1 {
+  color: white;
+  font-family: sans-serif;
+  letter-spacing: 2px;
+  font-size: 48px;
+
+
+}
+
+/*Linea blanca separadora*/
+
+.white-line {
+  border-bottom: white 2px solid;
+}
+
+
+/*Botones de Inicio, ProxEstrenos...Generos...*/
+
+.btn {
+  display: inline-block;
+  font-family: sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: #fff;
+  margin: 1rem auto;
+  padding: 0.7rem 0.5rem;
+  border-radius: 30em;
+  border-style: none;
+  position: absolute;
+  z-index: 1;
+  overflow: hidden;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background-color: transparent;
+  box-shadow: 1px 1px 12px #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-end;
+  padding: 5px 10px;
+
+}
+
+.btn::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  transform: translateX(-101%);
+  transition: all .3s ease;
+  z-index: -1;
+}
+
+.btn:hover {
+  color: #272727;
+  transition: all .3s ease;
+}
+
+.btn:hover::before {
+  transform: translateX(0);
+}
+
+
+/*Contenedor de Botones PREV y SIG.*/
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  align-self: flex-end;
+  width: 95%;
+  padding: 4px;
+}
+
+/*Contenedor de todas las cards*/
+
+.grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-top: 50px;
+  position: relative;
+  align-items: flex-start;
+
+}
+
+.card {
+  box-sizing: border-box;
+  width: 246px;
+  height: 370px;
+  box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(6px);
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.5s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  font-weight: bolder;
+  color: black;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 5%;
+  position: relative;
+  margin-right: 42px;
+  margin-left: 33px;
+
+
+}
+
+
+
+.card:last-child {
+  margin-bottom: 100px;
+
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  border: 2px solid rgb(207, 203, 203);
+  position: relative;
+  box-sizing: border-box;
+  object-fit: cover;
+
+}
+
+
+.card:hover {
+  border: 2px solid rgb(27, 26, 26);
+  transform: scale(1.07);
+}
+
+.card:active {
+  transform: scale(0.95) rotateZ(1.7deg);
+}
+
+.card a {
+  /*Link en img*/
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+}
+
+
+
+/*Botones de PREV y SIG. */
+
+.btn2 {
+  display: inline-block;
+  font-family: sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: #fff;
+  margin: 1rem auto;
+  padding: 0.7rem 0.5rem;
+  border-radius: 30em;
+  border-style: none;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background-color: transparent;
+  box-shadow: 1px 1px 12px #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-end;
+  padding: 5px 10px;
+
+}
+
+.btn2::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  transform: translateX(-101%);
+  transition: all .3s ease;
+  z-index: -1;
+}
+
+.btn2:hover {
+  color: #272727;
+  transition: all .3s ease;
+}
+
+.btn2:hover::before {
+  transform: translateX(0);
+}
+
+.scroll {
+  position: fixed;
+  bottom: 10px;
+  right: 40px;
+  background-color: #fff;
+  color: #000000;
+  box-shadow: none;
+  font-size: 26px;
+  border-radius: 30em;
+
+}
+
+.scroll::before {
+  background-color: #000000;
+  /* color: #fff; */
+  transform: translateY(101%);
+}
+
+.scroll:hover {
+  color: #fff;
+}
+
+/*Checkbox* - Migrar */
+
+
+.clear {
+  clear: both;
+}
+
+.checkBox {
+
+  display: block;
+  cursor: pointer;
+  width: 10px;
+  height: 10px;
+  border: 3px solid rgba(255, 255, 255, 0);
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0px 0px 0px 2px #fff;
+}
+
+.checkBox div {
+  width: 60px;
+  height: 60px;
+  background-color: #fff;
+  top: -52px;
+  left: -52px;
+  position: absolute;
+  transform: rotateZ(45deg);
+  z-index: 100;
+}
+
+.checkBox input[type=checkbox]:checked+div {
+  left: -10px;
+  top: -10px;
+}
+
+.checkBox input[type=checkbox] {
+  position: absolute;
+  left: 50px;
+  display: none;
+}
+
+.transition {
+  transition: 300ms ease;
+}
+
+
+.checkBox-container {
+  width: 246px;
+  height: 450px;
+
+  position: absolute;
+}
+
+.loader {
+  position: relative;
+  width: 54px;
+  height: 54px;
+  border-radius: 10px;
+}
+
+.loader div {
+  width: 8%;
+  height: 24%;
+  background: rgb(128, 128, 128);
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  opacity: 0;
+  border-radius: 50px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  animation: fade458 1s linear infinite;
+}
+
+@keyframes fade458 {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0.25;
+  }
+}
+
+.loader-container {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  align-self: center;
+  width: 100%;
+
+}
+
+.loader .bar1 {
+  transform: rotate(0deg) translate(0, -130%);
+  animation-delay: 0s;
+}
+
+.loader .bar2 {
+  transform: rotate(30deg) translate(0, -130%);
+  animation-delay: -1.1s;
+}
+
+.loader .bar3 {
+  transform: rotate(60deg) translate(0, -130%);
+  animation-delay: -1s;
+}
+
+.loader .bar4 {
+  transform: rotate(90deg) translate(0, -130%);
+  animation-delay: -0.9s;
+}
+
+.loader .bar5 {
+  transform: rotate(120deg) translate(0, -130%);
+  animation-delay: -0.8s;
+}
+
+.loader .bar6 {
+  transform: rotate(150deg) translate(0, -130%);
+  animation-delay: -0.7s;
+}
+
+.loader .bar7 {
+  transform: rotate(180deg) translate(0, -130%);
+  animation-delay: -0.6s;
+}
+
+.loader .bar8 {
+  transform: rotate(210deg) translate(0, -130%);
+  animation-delay: -0.5s;
+}
+
+.loader .bar9 {
+  transform: rotate(240deg) translate(0, -130%);
+  animation-delay: -0.4s;
+}
+
+.loader .bar10 {
+  transform: rotate(270deg) translate(0, -130%);
+  animation-delay: -0.3s;
+}
+
+.loader .bar11 {
+  transform: rotate(300deg) translate(0, -130%);
+  animation-delay: -0.2s;
+}
+
+.loader .bar12 {
+  transform: rotate(330deg) translate(0, -130%);
+  animation-delay: -0.1s;
+}
+
+.inputbox {
+  position: relative;
+
+}
+
+.buscador {
+  background-color: #000000;
+  color: #fff;
+  font-family: sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 30em; 
+  padding: 5px 10px; 
+}
+
+.buscador-container {
+  display: inline-block;
+  font-family: sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: #fff;
+  margin-left: 0;
+  
+  border-radius: 30em;
+  border-style: none;
+  position: absolute;
+  z-index: 1;
+  overflow: hidden;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background-color: transparent;
+  box-shadow: 1px 1px 12px #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-end;
+  padding: 5px;
+
+}

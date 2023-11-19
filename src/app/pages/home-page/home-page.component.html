@@ -1,0 +1,136 @@
+<body class="body">
+
+    <header id="header" class="header">
+        <h1>{{header}}</h1>
+     </header>
+
+    
+
+    <div class="leftSide">
+
+        <br>
+        <button class="btn" (click)="ListMovies()">Inicio</button>
+        <br><br>
+        <br><div class="white-line"></div>
+
+
+        <br><div class="buscador-container">
+            <input class="buscador" type="text" placeholder="Buscar por titulo" [(ngModel)]="valorInput" (keyup.enter)="Search()">
+        </div>
+        
+        
+        <br><br><br><div class="white-line"></div>  
+
+        <button class="btn" (click)="ListMovieByCriteria('https://moviesdatabase.p.rapidapi.com/titles/x/upcoming?titleType=movie&info=base_info&limit=21&sort=year.incr&page=', 'Proximos Estrenos', 1)">Prox. Estrenos </button><br><br>   
+        <button class="btn" (click)="ListMovieByCriteria('https://moviesdatabase.p.rapidapi.com/titles?titleType=movie&list=top_boxoffice_200&sort=pos.incr&page=1&info=base_info&limit=21', 'Ranking IMBD', 1)">Ranking IMBD</button><br><br>
+       
+
+        <br><div class="white-line"></div>  
+        <button class="btn" (click)="listFavorites()" >Mis Favoritos </button><br><br>
+        <button class="btn" (click)="LogOut()" routerLink="/LogIn">Cerrar Sesión</button>
+        <br><br><br><div class="white-line"></div>
+        <button class="btn" *ngIf="statButton" routerLink="/Admin">ESTADISTICAS</button><br><br>
+
+    </div>
+
+    <section class="section" id="section">
+        <button class="btn2 scroll" (click)="ScrollToTop()">↑</button>
+        
+        <div class="loader-container" *ngIf="loading">
+            <div class="loader" *ngIf="loading">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+                <div class="bar4"></div>
+                <div class="bar5"></div>
+                <div class="bar6"></div>
+                <div class="bar7"></div>
+                <div class="bar8"></div>
+                <div class="bar9"></div>
+                <div class="bar10"></div>
+                <div class="bar11"></div>
+                <div class="bar12"></div>
+            </div>
+        </div>
+        
+       
+
+        <div class="grid-container" *ngIf="!loading">
+            
+            <div class="h3container"*ngIf="NoFavorites">
+                <h3 >Aun no tienes peliculas favoritas. <br> <br>¡Presiona en una pelicula 
+                       de tu gusto y <br>haz click en "Añadir a favoritos"! </h3>  
+            </div>
+
+            <div class="h3container"*ngIf="NoSearch">
+                <h3 >No se ha encontrado pelicula con   <br>      esa palabra. <br><br>Recuerda que 'The Movies Wall' 
+                    ofrece una pequeña <br>cantidad de peliculas.<br><br> ¡Estamos trabajando dia a dia <br> para ofrecer 
+                    mayor variedad! </h3>  
+            </div>
+
+
+            <div *ngFor="let element of data" class="card" >
+               
+                <a [routerLink]="['/Movie-id', element.id]">
+                    <ng-container *ngIf="element.primaryImage">
+                    <img [ngSrc]= element.primaryImage.url (error)="handleImageError($event)" fill>
+                </ng-container>
+                <ng-container *ngIf="!element.primaryImage">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png" fill>
+                </ng-container>
+                </a>
+            
+            </div>
+
+        </div>
+    <div class="pagination" *ngIf="needButton">
+        <div class="pagination" *ngIf="buttonNextPrevPage">
+
+            <button class="btn2" (click)='ListMovieByGenre(currentGenre, header, prevPage)' >Anterior</button>
+            <button class="btn2" > {{numpage}}</button>
+            <button class="btn2" (click)='ListMovieByGenre(currentGenre, header, nextPage)' >Siguiente</button>
+
+        </div>
+
+        <div class="pagination" *ngIf="!buttonNextPrevPage">
+
+            <button class="btn2" (click)="ListMovieByCriteria(currentURL, header, prevPage)">Anterior</button>
+            <button class="btn2">{{numpage}}</button>
+            <button class="btn2" (click)="ListMovieByCriteria(currentURL, header, nextPage)">Siguiente</button>
+
+        </div>
+    </div>
+
+    </section>
+
+
+    <div class="rightSide">
+        <h2>GENEROS</h2>
+        <div class="white-line"></div>
+        <button class="btn" (click)="ListMovieByGenre('Action', 'Acción', 1)"> Acción </button><br><br>
+        <button class="btn" (click)="ListMovieByGenre('Animation', 'Animacion', 1)">Animacion</button><br><br>
+        <button class="btn" (click)="ListMovieByGenre('Adventure', 'Aventura', 1)">Aventura</button><br><br>
+        <button class="btn" (click)="ListMovieByGenre('Biography', 'Biografias', 1)">Biografias</button><br><br>
+        <button class="btn" (click)="ListMovieByGenre('War', 'Belicas', 1)">Belicas</button><br><br>
+        <button class="btn" (click)="ListMovieByGenre('Comedy', 'Comedia', 1)">Comedia</button><br><br>
+        <button class="btn" (click)="ListMovieByGenre('Sci-Fi', 'Ciencia Ficción', 1)">Ciencia Ficcion</button><br><br>
+        <button class="btn" (click)="ListMovieByGenre('Film-Noir', 'Cine Negro', 1)">Cine Negro</button><br><br>
+        <button class="btn" (click)="ListMovieByGenre('Crime', 'Crimen', 1)">Crimen</button><br><br>
+        <button class="btn" (click)="ListMovieByGenre('Sport', 'Deporte', 1)">Deportes</button><br><br>
+        <button class="btn" (click)="ListMovieByGenre('Documentary','Documentales', 1)">Documentales</button><br><br>
+        <button class="btn" (click)="ListMovieByGenre('Drama', 'Drama', 1)">Drama</button><br><br>
+        <button class="btn" (click)="ListMovieByGenre('Fantasy', 'Fantasia', 1)">Fantasia</button><br><br>
+        <button class="btn" (click)="ListMovieByGenre('History','Historicas', 1)">Historica</button><br><br>
+        <button class="btn" (click)="ListMovieByGenre('Musical', 'Musicales', 1)">Musicales</button><br><br>
+        <button class="btn" (click)="ListMovieByGenre('Romance', 'Romance', 1)">Romance</button><br><br>
+        <button class="btn" (click)="ListMovieByGenre('Thriller', 'Suspenso', 1)">Suspenso</button><br><br>
+        <button class="btn" (click)="ListMovieByGenre('Horror', 'Terror', 1)">Terror</button><br><br>
+
+
+    </div>
+
+    <footer class="footer">
+        
+    </footer>
+
+</body>
