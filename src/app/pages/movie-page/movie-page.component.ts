@@ -3,6 +3,8 @@ import { DataAPIService } from 'src/app/services/data-api.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { UsersDatabaseService } from 'src/app/services/users-database.service';
 import { Movie } from 'src/app/interfaces/Movie';
+import { UserComment } from 'src/app/interfaces/UserComment';
+import { Comment } from '@angular/compiler';
 
 
 @Component({
@@ -13,7 +15,8 @@ import { Movie } from 'src/app/interfaces/Movie';
 export class MoviePageComponent implements OnInit {
   txtFav1: string = 'Añadir a ';
   txtFav2: string = 'Favoritos';
-
+  commentsArray: UserComment [] = [];
+  comment!: Comment;
   loading!: boolean;
   tinyloading!: boolean;
   newUrl: string = '';
@@ -96,6 +99,20 @@ export class MoviePageComponent implements OnInit {
         this.txtFav2 = '';
       }
     }
+
+    const CommentsResult = await this.userService.getUserAndComment(this.id);
+    
+    if(CommentsResult){
+      
+      //console.log('OBJETO: ', CommentsResult.comments);
+      this.commentsArray = CommentsResult.comments;
+      console.log(this.commentsArray);
+    
+    }else{
+
+      /*TEXTO DE NO HAY COMENTARIOS PARA ESTA PELICULA. SE EL PRIMERO!*/
+    }
+       
   }
 
   addFavorite() {
@@ -133,4 +150,7 @@ export class MoviePageComponent implements OnInit {
   handleImageError(event: any) {
     event.target.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png';
   }
+
+
+
 }

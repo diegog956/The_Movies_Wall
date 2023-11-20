@@ -34,16 +34,16 @@
                 <div class="btn-fav-container-btn">
                     <button class="btn" (click)="addFavorite()"> {{txtFav1}} <br> {{txtFav2}}
                     </button>
-                    
+
                 </div>
 
             </div>
 
-           
-            
+
+
             <div class="movie-info">
 
-                
+
                 <p><img src="https://cdn-icons-png.flaticon.com/512/541/541415.png"> {{ Rating }}/10 </p>
 
 
@@ -96,11 +96,41 @@
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen *ngIf="!tinyloading"> </iframe>
             </div>
+
+            <br>
+            <div>
+
+                <div class="buscador-container">
+                    <h3>¡Deja tu comentario!</h3>
+                    <textarea class="buscador" type="text" placeholder="Escribe un comentario (Max. 500 carácteres)"
+                        maxlength="500"></textarea>
+                    <button class="btn myButton">Enviar</button>
+                </div>
+                <br>
+
+                <div class="movie-info showComments">
+                    <h3 >Comentarios de Usuarios:</h3>
+
+                    <div *ngFor="let element of commentsArray" class="">
+
+                        <div class="Comment-User">
+                            <p>{{ element.user }} comentó </p>
+                            <p>{{ element.comment }}</p>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
         </div>
 
         <div class="rightside" *ngIf="!loading">
-            <img id="imagenPelicula" [src]=Img alt="Poster de la película" (error)="handleImageError($event)" >
+            <img id="imagenPelicula" [src]=Img alt="Poster de la película" (error)="handleImageError($event)">
         </div>
+
 
 
     </section>

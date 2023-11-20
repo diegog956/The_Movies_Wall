@@ -23,7 +23,8 @@
 
 .leftside {
   width: 100%;
-  height: 96vh;
+  height: auto;
+  min-height: 96vh;
   grid-area: leftside;
   font-family: sans-serif;
   margin: 20px;
@@ -34,9 +35,9 @@
 
   grid-area: rightside;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 96vh;
+  justify-content: flex-start;
+  align-items: flex-start;
+  min-height: 96vh;
   
 }
 
@@ -45,7 +46,7 @@
   height: 658px;
   border-radius: 10px;
   position: relative;
-  margin-top: 3px;
+  margin-top: 23px;
   max-width: 100%;
   max-height: 100%;
 
@@ -75,9 +76,7 @@ h1 {
   margin-left: 200px;
   margin-top: 3%;
   position: relative;
-  /* Añadido */
-
-
+  margin-bottom: 0px;
 }
 
 
@@ -87,15 +86,31 @@ h1 {
   position: relative;
   margin-left: 60px;
   hyphens: auto;
+}
+
+.showComments{
+  min-height: 200px;
   
+  margin-left: 5px;
+  width: 99%;
+  color: #fff;
+  /* font-family: sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  letter-spacing: 2px; */
+}
+
+.Comment-User{
+
+
+
 }
 
 .movie-info img {
   height: 16px;
   width: 16px;
-
 }
-
 
 
 .loader {
@@ -286,3 +301,62 @@ h1 {
   
 }
 
+.buscador {
+  height: 100px;
+  max-width: 98%;
+  background-color: transparent;  
+  color: #fff;
+  font-family: sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 5px 10px; 
+  border-style: none;
+  overflow-x: hidden; /* Evitar el desbordamiento horizontal */
+  overflow-y: auto; /* Permitir el desbordamiento vertical */
+  overflow-wrap: break-word; /* Romper palabras si es necesario */
+  word-wrap: break-word;
+  resize: none; 
+ 
+  border: 0.1px solid white;
+}
+
+.buscador-container {
+  
+  display: inline-block;
+  font-family: sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: #fff;
+  margin-left: 0;
+  border-style: none;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  text-decoration: none;
+  letter-spacing: 2px;
+  background-color: transparent;
+  box-shadow: 1px 1px 12px #000000;
+  display: flex;
+  padding: 5px;
+}
+
+
+h3{
+  font-family: sans-serif;
+  font-family: sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: #fff;
+  margin-left: 0;
+  overflow: hidden;
+  text-decoration: none;
+  letter-spacing: 2px;
+  background-color: transparent;
+}
+
+.myButton {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}

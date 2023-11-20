@@ -354,6 +354,28 @@ export class UsersDatabaseService {
       }
     }
   }
+
+  async getUserAndComment(id: string): Promise<any | undefined> {
+
+    try {
+      const url = "http://localhost:4000/Comments/" + id;
+      const result = await fetch(url);
+     
+
+      if (result.ok) {
+        const comments = await result.json();
+        return comments;
+      } 
+
+      return undefined;
+
+    }
+    catch (error) {
+      console.log(error);
+      return undefined;
+    }
+  }
+
 }
 
 
