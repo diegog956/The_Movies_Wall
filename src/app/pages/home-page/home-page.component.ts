@@ -219,12 +219,10 @@ export class HomePageComponent implements OnInit{
       this.numpage = data.page;
       this.loading = false;
 
-      console.log('Data1: ', this.data);
-      console.log('Data LENGHT1: ', this.data.length)
+     
       
       if(this.data.length == 0 || this.data == null){
-        console.log('Data2: ', this.data);
-        console.log('Data LENGHT2: ', this.data.length)
+        
         this.NoSearch = true;
               
       }

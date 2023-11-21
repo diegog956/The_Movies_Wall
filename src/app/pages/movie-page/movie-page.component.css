@@ -90,7 +90,7 @@ h1 {
 
 .showComments{
   min-height: 200px;
-  
+  margin-bottom: 50px;
   margin-left: 5px;
   width: 99%;
   color: #fff;
@@ -102,10 +102,17 @@ h1 {
 }
 
 .Comment-User{
-
+border-bottom: solid 1px white;
 
 
 }
+
+.BlankLine{
+
+border-bottom: solid 2px white;
+
+}
+
 
 .movie-info img {
   height: 16px;

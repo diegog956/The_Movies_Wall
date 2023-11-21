@@ -103,22 +103,28 @@
                 <div class="buscador-container">
                     <h3>¡Deja tu comentario!</h3>
                     <textarea class="buscador" type="text" placeholder="Escribe un comentario (Max. 500 carácteres)"
-                        maxlength="500"></textarea>
-                    <button class="btn myButton">Enviar</button>
+                        maxlength="500" [(ngModel)]="valorInput"></textarea>
+                    <button class="btn myButton"  (click)="SendComment()"> Enviar</button>
                 </div>
                 <br>
 
                 <div class="movie-info showComments">
                     <h3 >Comentarios de Usuarios:</h3>
+                    <div class="BlankLine"></div>
 
-                    <div *ngFor="let element of commentsArray" class="">
+                    <div *ngIf="commentsArray.length === 0">
+                        <p>No hay comentarios todavía. ¡Sé el primero!</p>
+                      </div>
+<!-- SEGUIR CON LA MUESTRA DE LOS COMENTARIOS. A FUTURO AGREGAR EL ADD COMENTARIO Y LA ALERTA SI YA COMENTO LA PELICULA -->
+                    <div *ngFor="let element of commentsArray.reverse()" class="">
 
-                        <div class="Comment-User">
-                            <p>{{ element.user }} comentó </p>
-                            <p>{{ element.comment }}</p>
+                        <div class="Comment-User"> 
+                            <p>{{ element.user }} comentó el día {{ element.date }} hs </p>
+                            <p>{{element.comment }}</p>
+                            <p></p>
                         </div>
                     </div>
-
+                    
 
                 </div>
 

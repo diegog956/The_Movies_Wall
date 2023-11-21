@@ -5,6 +5,10 @@ import { UsersDatabaseService } from 'src/app/services/users-database.service';
 import { Movie } from 'src/app/interfaces/Movie';
 import { UserComment } from 'src/app/interfaces/UserComment';
 import { Comment } from '@angular/compiler';
+import { format } from 'date-fns';
+import { es } from 'date-fns/locale';
+import { BehaviorSubject } from 'rxjs';
+
 
 
 @Component({
@@ -13,9 +17,10 @@ import { Comment } from '@angular/compiler';
   styleUrls: ['./movie-page.component.css']
 })
 export class MoviePageComponent implements OnInit {
+  valorInput: string = '';
   txtFav1: string = 'Añadir a ';
   txtFav2: string = 'Favoritos';
-  commentsArray: UserComment [] = [];
+  commentsArray: UserComment[] = [];
   comment!: Comment;
   loading!: boolean;
   tinyloading!: boolean;
@@ -38,7 +43,7 @@ export class MoviePageComponent implements OnInit {
 
     const segments = window.location.pathname.split('/');
     const idString = segments.pop();
-    this.id = idString || '';  
+    this.id = idString || '';
 
 
     this.newUrl = 'https://moviesdatabase.p.rapidapi.com/titles/' + this.id + '?info=base_info';
@@ -54,8 +59,8 @@ export class MoviePageComponent implements OnInit {
 
       this.Votes = numeroFormateado;
 
-      this.GenreArray = movie.results.genres.genres;  
-      
+      this.GenreArray = movie.results.genres.genres;
+
       this.GenreArray.forEach(element => {
         this.GenreStats.push(element);
         this.Genre += element.text + ' / ';
@@ -72,11 +77,11 @@ export class MoviePageComponent implements OnInit {
       // })
 
       this.RunTime = (movie.results.runtime.seconds) / 60;
-      
-        
+
+
       this.Img = movie.results.primaryImage.url;
-      
-   
+
+
 
 
       this.newUrl = 'https://moviesdatabase.p.rapidapi.com/titles/' + this.id + '?info=trailer';
@@ -101,18 +106,17 @@ export class MoviePageComponent implements OnInit {
     }
 
     const CommentsResult = await this.userService.getUserAndComment(this.id);
-    
-    if(CommentsResult){
-      
-      //console.log('OBJETO: ', CommentsResult.comments);
-      this.commentsArray = CommentsResult.comments;
-      console.log(this.commentsArray);
-    
-    }else{
 
-      /*TEXTO DE NO HAY COMENTARIOS PARA ESTA PELICULA. SE EL PRIMERO!*/
+    if (CommentsResult) {
+
+
+      this.commentsArray = CommentsResult.comments;
+
+
     }
-       
+
+
+
   }
 
   addFavorite() {
@@ -134,7 +138,7 @@ export class MoviePageComponent implements OnInit {
       this.userService.addGenre(this.GenreStats);
 
     } else {
-      
+
       this.txtFav1 = 'Añadir a'
       this.txtFav2 = 'Favoritos';
 
@@ -150,6 +154,53 @@ export class MoviePageComponent implements OnInit {
   handleImageError(event: any) {
     event.target.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png';
   }
+
+  async SendComment() {
+    const username = localStorage.getItem('name') ?? 'Usuario Anónimo';
+    const MC: UserComment = {
+      user: username,
+      comment: this.valorInput,
+      date: format(new Date(), "EEEE, dd 'de' MMMM 'de' yyyy HH:mm:ss", { locale: es })
+
+    }
+    const flag = 0;
+    const allMovies: any = await this.userService.getMovies();
+    if (allMovies) {
+      for (let movie of allMovies) {
+
+        if (movie.id == this.id) {/*Si la pelicula existe en la bdd de comentarios*/
+
+          if (movie.comments.some((comment: any) => comment.user === username)) {
+
+
+            alert('Usted ya ha realizado un comentario. Solo se permite un comentario por usuario.');
+
+          } else {
+
+            this.userService.addCommentToMovie(MC, this.id);
+            
+            // this.userService.getComments(this.id).subscribe((commentsResult) => {
+            //   this.commentsArray = commentsResult.comments;
+            //   console.log('CommentArray:', this.commentsArray);
+            // });
+             
+
+            }
+
+          }else{
+
+              /* Plantear cuando la pelicula no existe.
+              Crearla en la base de datos y luego añadir el comentario!*/
+
+          }
+
+        }
+
+      }
+    
+  }
+
+
 
 
 

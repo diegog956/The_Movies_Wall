@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Movie } from '../interfaces/Movie';
 import { count } from '@swimlane/ngx-charts';
+import { UserComment } from '../interfaces/UserComment';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -174,8 +176,7 @@ export class UsersDatabaseService {
                 body: JSON.stringify(user),
                 headers: { 'content-type': 'application/json' }
               })
-              console.log(user.FavMovies);
-              console.log(user.id);
+              
 
               return true;
             } catch (error) {
@@ -375,6 +376,99 @@ export class UsersDatabaseService {
       return undefined;
     }
   }
+
+
+  async addMovieToComments(id1: string) {
+    const url = 'http://localhost:4000/Comments';
+    
+    const movie: any = {
+      id: id1,
+      comments: []
+    };
+
+    try {
+      await fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(movie),
+        headers: { 'content-type': 'application/json' }
+      })
+
+      
+    } catch (error) {
+
+      console.log(error);
+
+    }
+
+  }
+
+
+  async getMovies(): Promise<Comment[] | undefined> {
+
+    try {
+      const result = await fetch('http://localhost:4000/Comments');
+      const Movies = result.json();
+      return Movies;
+
+    } catch (error) {
+
+      console.log(error);
+      return undefined;
+
+    }
+
+
+  }
+
+  
+  async addCommentToMovie(userComment: UserComment, movieID: string) {
+
+    try {
+      const movies: any = await this.getMovies();
+
+      if (movies) {
+        for (let movie of movies) {
+
+          if (movieID == movie.id) {
+
+            movie.comments.push(userComment);
+
+            try {
+
+              await fetch('http://localhost:4000/Comments/' + movieID, {
+                method: 'PUT',
+                body: JSON.stringify(movie),
+                headers: { 'content-type': 'application/json' }
+              })
+              
+
+              return true;
+            } catch (error) {
+
+              console.log(error);
+
+              return false;
+
+            }
+          }
+        }
+        return false;
+      }
+      else {
+        return undefined
+      }
+    }
+    catch (error) {
+      console.log(error);
+      return undefined;
+    }
+
+  }
+
+  // getComments(id: string): Observable<any> {
+  //   const url = "http://localhost:4000/Comments/" + id;
+  //   return this.httpClient.get<any>(url);
+  // }
 
 }
 
