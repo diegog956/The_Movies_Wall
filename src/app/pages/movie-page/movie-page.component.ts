@@ -17,6 +17,7 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['./movie-page.component.css']
 })
 export class MoviePageComponent implements OnInit {
+  txtEnviar: string = 'Enviar';
   valorInput: string = '';
   txtFav1: string = 'Añadir a ';
   txtFav2: string = 'Favoritos';
@@ -163,13 +164,13 @@ export class MoviePageComponent implements OnInit {
       date: format(new Date(), "EEEE, dd 'de' MMMM 'de' yyyy HH:mm:ss", { locale: es })
 
     }
-    const flag = 0;
+    let flag:number = 0;
     const allMovies: any = await this.userService.getMovies();
     if (allMovies) {
       for (let movie of allMovies) {
 
         if (movie.id == this.id) {/*Si la pelicula existe en la bdd de comentarios*/
-
+          flag = 1;
           if (movie.comments.some((comment: any) => comment.user === username)) {
 
 
@@ -177,27 +178,54 @@ export class MoviePageComponent implements OnInit {
 
           } else {
 
-            this.userService.addCommentToMovie(MC, this.id);
-            
-            // this.userService.getComments(this.id).subscribe((commentsResult) => {
-            //   this.commentsArray = commentsResult.comments;
-            //   console.log('CommentArray:', this.commentsArray);
-            // });
-             
+            await this.userService.addCommentToMovie(MC, this.id);
 
-            }
+            this.userService.getComments(this.id).subscribe((commentsResult) => {
+              this.commentsArray = commentsResult.comments;
+              console.log('CommentArray:', this.commentsArray);
+            });
+            this.txtEnviar = 'Enviado ✓';
+            this.valorInput = '';
+            setTimeout(()=> {this.txtEnviar='Enviar'},3000)
+          } /*Plantear la creacion de un Boton para borrar comentario del usuario. */
 
-          }else{
+        } else {
 
-              /* Plantear cuando la pelicula no existe.
-              Crearla en la base de datos y luego añadir el comentario!*/
+          // /* Plantear cuando la pelicula no existe.
+          // Crearla en la base de datos y luego añadir el comentario!*/
 
-          }
+          // await this.userService.addMovie(this.id);
+          // console.log('1')
+          // await this.userService.addCommentToMovie(MC, this.id);
+
+          // this.userService.getComments(this.id).subscribe((commentsResult) => {
+          //   this.commentsArray = commentsResult.comments;
+          //   console.log('CommentArray:', commentsResult);
+          // });
+          // this.txtEnviar = 'Enviado ✓'
+          // setTimeout(()=> {this.txtEnviar='Enviar'},3000)
 
         }
 
       }
-    
+      if(flag==0){
+        await this.userService.addMovie(this.id);
+          
+          await this.userService.addCommentToMovie(MC, this.id);
+
+
+
+          this.userService.getComments(this.id).subscribe((commentsResult) => {
+            this.commentsArray = commentsResult.comments;
+            console.log('CommentArray:', commentsResult);
+          });
+          this.txtEnviar = 'Enviado ✓'
+          this.valorInput = '';
+          setTimeout(()=> {this.txtEnviar='Enviar'},3000)
+      }
+
+    }
+
   }
 
 

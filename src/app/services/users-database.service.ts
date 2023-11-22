@@ -465,10 +465,34 @@ export class UsersDatabaseService {
 
   }
 
-  // getComments(id: string): Observable<any> {
-  //   const url = "http://localhost:4000/Comments/" + id;
-  //   return this.httpClient.get<any>(url);
-  // }
+  getComments(id: string): Observable<any> {
+    const url = "http://localhost:4000/Comments/" + id;
+    return this.httpClient.get<any>(url);
+  }
+
+
+  async addMovie(id1: string) {
+    
+    const movie: any = {
+      id: id1,
+      comments: []
+    }
+  
+    try {
+      await fetch('http://localhost:4000/Comments/', {
+        method: 'POST',
+        body: JSON.stringify(movie),
+        headers: { 'content-type': 'application/json' }
+      })
+
+      
+    } catch (error) {
+
+      console.log(error);
+
+    }
+
+  }
 
 }
 
