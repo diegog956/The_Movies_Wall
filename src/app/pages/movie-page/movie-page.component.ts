@@ -17,6 +17,7 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['./movie-page.component.css']
 })
 export class MoviePageComponent implements OnInit {
+  user!: string;
   txtEnviar: string = 'Enviar';
   valorInput: string = '';
   txtFav1: string = 'Añadir a ';
@@ -41,6 +42,10 @@ export class MoviePageComponent implements OnInit {
   UnsafeTrailer!: string;
   GenreStats: Array<any> = [];
   async ngOnInit() {
+    const aux = localStorage.getItem('name');
+    if(aux){
+      this.user = aux;
+    }
 
     const segments = window.location.pathname.split('/');
     const idString = segments.pop();
@@ -189,23 +194,7 @@ export class MoviePageComponent implements OnInit {
             setTimeout(()=> {this.txtEnviar='Enviar'},3000)
           } /*Plantear la creacion de un Boton para borrar comentario del usuario. */
 
-        } else {
-
-          // /* Plantear cuando la pelicula no existe.
-          // Crearla en la base de datos y luego añadir el comentario!*/
-
-          // await this.userService.addMovie(this.id);
-          // console.log('1')
-          // await this.userService.addCommentToMovie(MC, this.id);
-
-          // this.userService.getComments(this.id).subscribe((commentsResult) => {
-          //   this.commentsArray = commentsResult.comments;
-          //   console.log('CommentArray:', commentsResult);
-          // });
-          // this.txtEnviar = 'Enviado ✓'
-          // setTimeout(()=> {this.txtEnviar='Enviar'},3000)
-
-        }
+        } 
 
       }
       if(flag==0){
@@ -229,7 +218,16 @@ export class MoviePageComponent implements OnInit {
   }
 
 
+  async DeleteComment(user: string){
 
+      await this.userService.DeleteComment(user, this.id);
+
+      this.userService.getComments(this.id).subscribe((commentsResult) => {
+        this.commentsArray = commentsResult.comments;
+        console.log('CommentArray:', commentsResult);
+      });
+
+  }
 
 
 }

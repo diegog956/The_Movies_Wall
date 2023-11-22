@@ -367,3 +367,14 @@ h3{
   bottom: 10px;
   right: 10px;
 }
+
+.comment-container {
+  position: relative;
+ 
+}
+
+.deletebutton{
+  position: relative;
+  align-items: right;
+  
+}

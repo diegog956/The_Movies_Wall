@@ -115,13 +115,13 @@
                     <div *ngIf="commentsArray.length === 0">
                         <p>No hay comentarios todavía. ¡Sé el primero!</p>
                       </div>
-<!-- SEGUIR CON LA MUESTRA DE LOS COMENTARIOS. A FUTURO AGREGAR EL ADD COMENTARIO Y LA ALERTA SI YA COMENTO LA PELICULA -->
-                    <div *ngFor="let element of commentsArray.reverse()" class="">
+
+                    <div *ngFor="let element of commentsArray.reverse()" class="comment-container">
 
                         <div class="Comment-User"> 
                             <p>{{ element.user }} comentó el día {{ element.date }} hs </p>
                             <p>{{element.comment }}</p>
-                            <p></p>
+                            <button  *ngIf="element.user === user" class="btn myButton" (click)="DeleteComment(element.user)" >Borrar</button>
                         </div>
                     </div>
                     
