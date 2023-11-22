@@ -81,6 +81,7 @@
 .footer {
 
   min-height: 80px;
+  margin-top: 20px;
   grid-area: footer;
   border-top: 2px solid white;
 }

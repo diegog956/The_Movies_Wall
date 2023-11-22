@@ -176,7 +176,7 @@ export class UsersDatabaseService {
                 body: JSON.stringify(user),
                 headers: { 'content-type': 'application/json' }
               })
-              
+
 
               return true;
             } catch (error) {
@@ -361,12 +361,12 @@ export class UsersDatabaseService {
     try {
       const url = "http://localhost:4000/Comments/" + id;
       const result = await fetch(url);
-     
+
 
       if (result.ok) {
         const comments = await result.json();
         return comments;
-      } 
+      }
 
       return undefined;
 
@@ -380,7 +380,7 @@ export class UsersDatabaseService {
 
   async addMovieToComments(id1: string) {
     const url = 'http://localhost:4000/Comments';
-    
+
     const movie: any = {
       id: id1,
       comments: []
@@ -393,7 +393,7 @@ export class UsersDatabaseService {
         headers: { 'content-type': 'application/json' }
       })
 
-      
+
     } catch (error) {
 
       console.log(error);
@@ -420,7 +420,7 @@ export class UsersDatabaseService {
 
   }
 
-  
+
   async addCommentToMovie(userComment: UserComment, movieID: string) {
 
     try {
@@ -440,7 +440,7 @@ export class UsersDatabaseService {
                 body: JSON.stringify(movie),
                 headers: { 'content-type': 'application/json' }
               })
-              
+
 
               return true;
             } catch (error) {
@@ -472,12 +472,12 @@ export class UsersDatabaseService {
 
 
   async addMovie(id1: string) {
-    
+
     const movie: any = {
       id: id1,
       comments: []
     }
-  
+
     try {
       await fetch('http://localhost:4000/Comments/', {
         method: 'POST',
@@ -485,7 +485,7 @@ export class UsersDatabaseService {
         headers: { 'content-type': 'application/json' }
       })
 
-      
+
     } catch (error) {
 
       console.log(error);
@@ -493,6 +493,56 @@ export class UsersDatabaseService {
     }
 
   }
+
+
+  async DeleteComment(user: string, movieID: string) {
+
+    try {
+      const movies: any = await this.getMovies();
+
+      if (movies) {
+        for (let movie of movies) {
+
+          if (movieID == movie.id) {
+
+
+            if (movie.comments.some((comment: { user: string; }) => comment.user === user)) {
+             
+              movie.comments = movie.comments.filter((comment: { user: any; }) => comment.user !== user);
+
+              try {
+
+                await fetch('http://localhost:4000/Comments/' + movieID, {
+                  method: 'PUT',
+                  body: JSON.stringify(movie),
+                  headers: { 'content-type': 'application/json' }
+                })
+
+
+                return true;
+              } catch (error) {
+
+                console.log(error);
+
+                return false;
+
+              }
+            }
+          }
+        }
+        return false;
+      }
+      else {
+        return undefined
+      }
+    }
+    catch (error) {
+      console.log(error);
+      return undefined;
+    }
+
+  }
+
 
 }
 

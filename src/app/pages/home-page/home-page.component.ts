@@ -66,7 +66,7 @@ export class HomePageComponent implements OnInit{
     this.NoSearch = false;
     this.loading = true;
 
-    this.apiService.getData('https://moviesdatabase.p.rapidapi.com/titles/random?titleType=movie&limit=21&info=base_info&endYear=2022&list=most_pop_movies').subscribe(data => {
+    this.apiService.getData('https://moviesdatabase.p.rapidapi.com/titles/random?titleType=movie&limit=21&info=base_info&endYear=2022&list=top_rated_english_250').subscribe(data => {
       console.log('Datos cargados exitosamente:', data);
       this.data = data.results; 
       this.numpage = data.page;
@@ -88,7 +88,7 @@ export class HomePageComponent implements OnInit{
       this.header = header;
       this.data = [];
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      let newUrl = 'https://moviesdatabase.p.rapidapi.com/titles?genre=' + genre + '&titleType=movie&list=most_pop_movies&sort=pos.incr&page=' + page + '&info=base_info&endYear=2022&limit=21';
+      let newUrl = 'https://moviesdatabase.p.rapidapi.com/titles?genre=' + genre + '&titleType=movie&list=top_rated_english_250&sort=pos.incr&page=' + page + '&info=base_info&endYear=2022&limit=21';
 
       this.apiService.getData(newUrl).subscribe(data => {
 
@@ -134,7 +134,7 @@ export class HomePageComponent implements OnInit{
 
       } else {
 
-        url = 'https://moviesdatabase.p.rapidapi.com/titles?titleType=movie&list=top_boxoffice_200&sort=pos.incr&page=' + page + '&info=base_info&limit=21';
+        url = 'https://moviesdatabase.p.rapidapi.com/titles?titleType=movie&list=top_rated_english_250&sort=pos.incr&page=' + page + '&info=base_info&limit=21';
 
       }
 
@@ -242,7 +242,7 @@ export class HomePageComponent implements OnInit{
     this.NoFavorites = true;
     this.loading = true;
 
-    this.apiService.getData('https://moviesdatabase.p.rapidapi.com/titles/random?titleType=movie&limit=3&info=base_info&endYear=2022&list=top_boxoffice_200').subscribe(data => {
+    this.apiService.getData('https://moviesdatabase.p.rapidapi.com/titles/random?titleType=movie&limit=3&info=base_info&endYear=2022&list=top_rated_english_250').subscribe(data => {
       console.log('Datos cargados exitosamente:', data);
       this.data = data.results; 
       this.numpage = data.page;

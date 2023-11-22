@@ -377,11 +377,6 @@
       "value": 7
     },
     {
-      "id": "Documentary",
-      "name": "Documental",
-      "value": 5
-    },
-    {
       "id": "Drama",
       "name": "Drama",
       "value": 11
@@ -454,14 +449,14 @@
       "id": "tt2463208",
       "comments": [
         {
-          "user": "diego",
-          "comment": "Muy buena!",
-          "date": "martes, 21 de noviembre de 2023 10:20:10"
-        },
-        {
           "user": "Juan",
           "comment": "El final es aburrido.",
           "date": "martes, 21 de noviembre de 2023 10:20:29"
+        },
+        {
+          "user": "diego",
+          "comment": "Una película de aventuras que te lleva de la mano por un viaje lleno de emoción y adrenalina. Con paisajes increíbles y personajes que te atrapan, es un imperdible para los amantes de la acción y la aventura.",
+          "date": "miércoles, 22 de noviembre de 2023 12:22:31"
         }
       ]
     },
@@ -475,7 +470,7 @@
         {
           "user": "diego",
           "comment": "Impresionante de principio a fin. La dirección magistral y las actuaciones convincentes se combinan para ofrecer una obra maestra cinematográfica que te deja reflexionando mucho después de que termina.",
-          "date": "miércoles, 22 de noviembre de 2023 10:42:29"
+          "date": "miércoles, 22 de noviembre de 2023 12:16:29"
         }
       ]
     },
@@ -486,6 +481,16 @@
           "user": "diego",
           "comment": "Una montaña rusa emocional que te atrapa desde el primer momento. Los efectos visuales y la banda sonora agregan capas adicionales a una historia ya impactante. ¡Definitivamente una película que recomendaré a todos!",
           "date": "miércoles, 22 de noviembre de 2023 10:43:47"
+        }
+      ]
+    },
+    {
+      "id": "tt1745960",
+      "comments": [
+        {
+          "user": "diego",
+          "comment": "La película fue agridulce. Momentos cautivadores, pero giros que decepcionaron. Destaco la cinematografía, pero en general, una experiencia con emociones encontradas.",
+          "date": "jueves, 23 de noviembre de 2023 11:31:37"
         }
       ]
     }
