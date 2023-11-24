@@ -1,3 +1,7 @@
+.body{
+  margin: -8px;
+}
+
 form {
   --bg-light: #efefef;
   --bg-dark: #ffffff;

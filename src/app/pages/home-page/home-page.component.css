@@ -19,6 +19,7 @@
     "footer footer footer";
   grid-template-rows: auto 1fr auto;
   grid-template-columns: 16% 67% 17%;
+  margin: -8px;
 
 }
 
@@ -213,12 +214,13 @@ h1 {
   margin-top: 50px;
   position: relative;
   align-items: flex-start;
+  width: 100%;
 
 }
 
 .card {
   box-sizing: border-box;
-  width: 246px;
+  width: 27.333%;
   height: 370px;
   box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
   backdrop-filter: blur(6px);
@@ -235,8 +237,8 @@ h1 {
   padding: 0;
   margin-bottom: 5%;
   position: relative;
-  margin-right: 33px;
-  margin-left: 32px;
+  margin-right: 3%;
+  margin-left: 3%;
 }
 
 
@@ -463,6 +465,7 @@ h1 {
   font-size: 16px;
   border-radius: 30em; 
   padding: 5px 10px; 
+  width: 100%;
 }
 
 .buscador-container {
@@ -488,5 +491,5 @@ h1 {
   justify-content: center;
   align-self: flex-end;
   padding: 5px;
-
+  width: 16%;
 }
