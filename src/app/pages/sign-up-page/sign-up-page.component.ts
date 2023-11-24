@@ -16,7 +16,7 @@ export class SignUpPageComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private userService: UsersDatabaseService) { }
 
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
 
     this.formLogin = this.formBuilder.group({
       Name: ['',[Validators.required,Validators.maxLength(20)]],
@@ -30,7 +30,7 @@ export class SignUpPageComponent implements OnInit {
   }
 
 
-  async SignUp(): Promise<any> {
+  async SignUp(): Promise<any> {/*Recupera el ultimo ID creado, recibe datos en formularios y añade a Base de Datos */
     
     try {
       const users = await this.userService.getUsers();
@@ -65,7 +65,7 @@ export class SignUpPageComponent implements OnInit {
 
   }
 
-  getTodayDate(): string {
+  getTodayDate(): string {/*Parseo de la fecha para mejor visualizacion */
     const today = new Date();
     const year = today.getFullYear();
     let month: string | number = today.getMonth() + 1;

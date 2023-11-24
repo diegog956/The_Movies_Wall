@@ -20,28 +20,19 @@ export class HomePageComponent implements OnInit{
   prevPage!: number;
   nextPage!: number;
   header: string = '¡Bienvenido!';
-
   loading!: boolean;
-
   data: any[] = [];
-
-
   userEmail!: string | null;
-
   valorInput: string = '';
-
-
   currentURL!: string;
-
   needButton!: boolean;
   buttonNextPrevPage!: boolean;
-
 
   constructor(private apiService: DataAPIService, private route: ActivatedRoute, private userService: UsersDatabaseService) { }
   
   
   
-   ngOnInit() {
+   ngOnInit() { /*Verifica si el usuario tiene rol de administrador, de ser asi, muestra el boton de Estadisticas.*/
    
     this.NoFavorites = false;
     this.NoSearch = false;
@@ -56,11 +47,10 @@ export class HomePageComponent implements OnInit{
     }
 
     this.ListMovies();
-    
-    
+        
   }
 
-  ListMovies() {
+  ListMovies() {/*Muestra 21 peliculas random en el Inicio */
     
     this.NoFavorites = false;
     this.NoSearch = false;
@@ -73,14 +63,11 @@ export class HomePageComponent implements OnInit{
       this.loading = false;
       this.needButton = false;
       this.header = 'Inicio';
-     
-      
+           
     })
-
-
   }
 
-  ListMovieByGenre(genre: string, header: string, page: number) {
+  ListMovieByGenre(genre: string, header: string, page: number) {/*Recibe el genero y realiza la peticion a la API actualiza el arreglo de peliculas a mostrar*/
     this.NoFavorites = false;
     this.NoSearch = false;
     if (page > 0) {
@@ -94,15 +81,9 @@ export class HomePageComponent implements OnInit{
 
         this.data = data.results;
         this.loading = false;
-
         this.needButton = true;
         this.buttonNextPrevPage = true;
         this.numpage = data.page;
-
-
-        console.log(this.needButton);
-        console.log(this.buttonNextPrevPage);
-
         this.currentURL = newUrl;
         this.currentGenre = genre;
 
@@ -121,7 +102,7 @@ export class HomePageComponent implements OnInit{
     }
   }
 
-  ListMovieByCriteria(url: string, header: string, page: number) {
+  ListMovieByCriteria(url: string, header: string, page: number) {/*Recibe la URL del criterio y realiza la peticion (Es distinto el manejo de la peticion con respecto a la busqueda de peliculas por genero y para el tratado de la paginas siguientes y anteriores.) */
     this.NoFavorites = false;
     this.NoSearch = false;
     if (page > 0) {
@@ -165,7 +146,7 @@ export class HomePageComponent implements OnInit{
     }
   }
 
-  async listFavorites() {
+  async listFavorites() { /*De acuerdo al mail que se haya registrado, realiza la peticion a la API de las peliculas favoritas */
     this.NoSearch = false;
     window.scrollTo({ top: 0, behavior: 'smooth' });
     try {
@@ -195,16 +176,16 @@ export class HomePageComponent implements OnInit{
   }
 
 
-  ScrollToTop() {
+  ScrollToTop() { /*Efecto visual para posicionar la vista en el header */
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
 
-  LogOut() {
+  LogOut() { /*Cierra sesion y limpia el cache que posee los datos de usuario */
     localStorage.clear();
   }
 
-  Search() {
+  Search() { /*Busqueda de pelicula por titulo */
     this.NoFavorites = false;
     this.NoSearch = false;
     this.header = this.valorInput;
@@ -212,15 +193,13 @@ export class HomePageComponent implements OnInit{
     window.scrollTo({ top: 0, behavior: 'smooth' });
     const url = 'https://moviesdatabase.p.rapidapi.com/titles/search/title/' + this.valorInput;
 
-
     this.apiService.getSearchData(url).subscribe(data => {
 
       this.data = data.results;
       this.numpage = data.page;
       this.loading = false;
 
-     
-      
+         
       if(this.data.length == 0 || this.data == null){
         
         this.NoSearch = true;
@@ -230,14 +209,11 @@ export class HomePageComponent implements OnInit{
     })
     this.valorInput = '';
     
-   
-
-
   }
 
 
 
-  ListRandomMovies() {
+  ListRandomMovies() { /*Peticion de 3 peliculas a la API para cuando el usuario no tiene favoritos seleccionados. */
     this.NoSearch = false;
     this.NoFavorites = true;
     this.loading = true;
@@ -249,13 +225,9 @@ export class HomePageComponent implements OnInit{
       this.loading = false;
       this.needButton = false;
       this.header = 'Inicio';
-     
-      
+           
     })
-
-
   }
-
 
   
 handleImageError(event: any) {

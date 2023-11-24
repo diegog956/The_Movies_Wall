@@ -41,7 +41,7 @@ export class MoviePageComponent implements OnInit {
   TrailerSafe!: any;
   UnsafeTrailer!: string;
   GenreStats: Array<any> = [];
-  async ngOnInit() {
+  async ngOnInit() { /*Recoje la ID enviada por parametro a traves de la URL y realiza la peticion de informacion. Muestra detalle de pelicula y comentarios de la misma. */
     const aux = localStorage.getItem('name');
     if(aux){
       this.user = aux;
@@ -115,17 +115,13 @@ export class MoviePageComponent implements OnInit {
 
     if (CommentsResult) {
 
-
       this.commentsArray = CommentsResult.comments;
-
 
     }
 
-
-
   }
 
-  addFavorite() {
+  addFavorite() { /*Agrega pelicula a arreglo de peliculas favoritas del usuario */
     if (this.txtFav1 == 'Añadir a ') {
       this.txtFav1 = 'Añadido ✓'
       this.txtFav2 = '';
@@ -157,11 +153,11 @@ export class MoviePageComponent implements OnInit {
     }
   }
 
-  handleImageError(event: any) {
+  handleImageError(event: any) { /*Arregla error de imagen NOT FOUND provista por la API */
     event.target.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png';
   }
 
-  async SendComment() {
+  async SendComment() { /*Envia comentario realizado a arreglo de comentarios en peliculas y actualiza el div */
     const username = localStorage.getItem('name') ?? 'Usuario Anónimo';
     const MC: UserComment = {
       user: username,
@@ -192,10 +188,8 @@ export class MoviePageComponent implements OnInit {
             this.txtEnviar = 'Enviado ✓';
             this.valorInput = '';
             setTimeout(()=> {this.txtEnviar='Enviar'},3000)
-          } /*Plantear la creacion de un Boton para borrar comentario del usuario. */
-
+          } 
         } 
-
       }
       if(flag==0){
         await this.userService.addMovie(this.id);
@@ -212,13 +206,11 @@ export class MoviePageComponent implements OnInit {
           this.valorInput = '';
           setTimeout(()=> {this.txtEnviar='Enviar'},3000)
       }
-
     }
-
   }
 
 
-  async DeleteComment(user: string){
+  async DeleteComment(user: string){ /*Elimina el comentario realizado por el usuario de la base de datos*/
 
       await this.userService.DeleteComment(user, this.id);
 

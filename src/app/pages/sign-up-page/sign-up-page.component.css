@@ -5,7 +5,6 @@ body{
 form {
     --bg-light: #efefef;
     --bg-dark: #ffffff;
-    /* --clr: #58BC82; */
     --clr: #fff;
     --clr-alpha: #ffffff;
     display: flex;
@@ -17,7 +16,6 @@ form {
     background-color: rgba(0, 0, 0, 0.902);
     padding: 2rem;
     border-radius: 1rem;
-    /* border: 1px solid #58BC82; */
     border: 1px solid #fff;
     box-shadow: 0 4px 8px #0000001a;
 }

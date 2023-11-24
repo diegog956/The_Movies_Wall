@@ -71,14 +71,14 @@ export class AdminPageComponent implements OnInit {
 
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void { /*Muestra el grafico y obtiene los datos de la base de datos de usuarios.*/
     this.chart = true;
     this.showStats('http://localhost:4000/Genres');
     
 
   }
 
-  showStats(url:string){
+  showStats(url:string){ /*Verifica el correcto funcionamiento de la base de datos en la obtencion de datos y los ordena por valor*/
     if(url == 'http://localhost:4000/Countries'){
       this.chart = false;
     }else{
@@ -98,6 +98,8 @@ export class AdminPageComponent implements OnInit {
       }
     });
   }
+
+  /*Efectos visuales sobre las graficas.*/
 
   onSelect(data: any): void {
     console.log('Item clicked', JSON.parse(JSON.stringify(data)));

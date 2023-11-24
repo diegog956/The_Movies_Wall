@@ -27,7 +27,7 @@ export class LogInPageComponent implements OnInit {
     })
   }
 
-  async login() {
+  async login() {/*Coteja los datos ingresados. Si son correctos almacena al usuario en la cache para su posterior uso */
 
     this.email = this.formLogin.controls['Email'].value;
     this.password = this.formLogin.controls['Password'].value;

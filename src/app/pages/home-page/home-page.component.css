@@ -6,13 +6,9 @@
   min-height: 97vh;
   position: relative;
   background-image: url('https://w0.peakpx.com/wallpaper/900/292/HD-wallpaper-black-bricks-wall-android-iphone-iphone12-samsung.jpg');
-
   background-repeat: repeat;
-  /* background-size: contain; */
-
   background-attachment: scroll;
   display: grid;
-
   grid:
     "header header header"
     "leftSide body rightSide"
@@ -20,7 +16,6 @@
   grid-template-rows: auto 1fr auto;
   grid-template-columns: 16% 67% 17%;
   margin: -8px;
-
 }
 
 
@@ -28,9 +23,7 @@
   height: 94px;
   grid-area: header;
   border-bottom: 2px solid white;
-
   font-weight: 600;
-
   color: #fff;
   z-index: 1;
   overflow: hidden;
@@ -41,9 +34,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
-  /* background-image: url(https://i.imgur.com/Ak1CG50.png); */
-
   background-attachment: scroll;
   background-size: 1480px 90px;
   position: relative;
@@ -221,7 +211,7 @@ h1 {
 .card {
   box-sizing: border-box;
   width: 27.333%;
-  height: 370px;
+  height: 400px;
   box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
   backdrop-filter: blur(6px);
   text-align: center;
@@ -237,7 +227,7 @@ h1 {
   padding: 0;
   margin-bottom: 5%;
   position: relative;
-  margin-right: 3%;
+  margin-right: 2%;
   margin-left: 3%;
 }
 
@@ -343,7 +333,6 @@ h1 {
 
 .scroll::before {
   background-color: #000000;
-  /* color: #fff; */
   transform: translateY(101%);
 }
 

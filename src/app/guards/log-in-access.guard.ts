@@ -9,7 +9,7 @@ export class LogInAccessGuard implements CanActivate  {
 
   constructor(private router: Router, private userService: UsersDatabaseService) {}
 
-  canActivate(): boolean {
+  canActivate(): boolean { 
     
     if (!this.userService.isAuthenticated()) {
       
