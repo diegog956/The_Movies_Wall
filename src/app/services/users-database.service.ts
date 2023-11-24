@@ -212,7 +212,7 @@ export class UsersDatabaseService {
 
       if (peliculaAEliminar) {
         user.FavMovies = user.FavMovies.filter(pelicula => pelicula !== peliculaAEliminar);
-        console.log(user.FavMovies);
+      
 
         try {
 

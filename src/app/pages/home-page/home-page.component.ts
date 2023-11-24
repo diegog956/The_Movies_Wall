@@ -57,7 +57,7 @@ export class HomePageComponent implements OnInit{
     this.loading = true;
 
     this.apiService.getData('https://moviesdatabase.p.rapidapi.com/titles/random?titleType=movie&limit=21&info=base_info&endYear=2022&list=top_rated_english_250').subscribe(data => {
-      console.log('Datos cargados exitosamente:', data);
+     
       this.data = data.results; 
       this.numpage = data.page;
       this.loading = false;
@@ -164,7 +164,7 @@ export class HomePageComponent implements OnInit{
     } catch (error) {
 
     }
-    console.log(this.data);
+    
     if(this.data.length == 0){
      
       this.NoFavorites = true;
@@ -219,7 +219,7 @@ export class HomePageComponent implements OnInit{
     this.loading = true;
 
     this.apiService.getData('https://moviesdatabase.p.rapidapi.com/titles/random?titleType=movie&limit=3&info=base_info&endYear=2022&list=top_rated_english_250').subscribe(data => {
-      console.log('Datos cargados exitosamente:', data);
+     
       this.data = data.results; 
       this.numpage = data.page;
       this.loading = false;

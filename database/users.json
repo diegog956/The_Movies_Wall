@@ -323,6 +323,15 @@
           }
         }
       ]
+    },
+    {
+      "id": 19,
+      "Name": "deisga",
+      "Email": "boca@gmail.com",
+      "Password": "skfdasdklfal",
+      "BirthDate": "2023-01-01",
+      "Country": "Argentina",
+      "FavMovies": []
     }
   ],
   "Genres": [
@@ -416,7 +425,7 @@
     {
       "id": "Argentina",
       "name": "Argentina",
-      "value": 29
+      "value": 31
     },
     {
       "id": "Brasil",
@@ -426,7 +435,7 @@
     {
       "id": "Chile",
       "name": "Chile",
-      "value": 11
+      "value": 12
     },
     {
       "id": "España",

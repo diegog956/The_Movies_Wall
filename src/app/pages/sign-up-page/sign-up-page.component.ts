@@ -31,7 +31,7 @@ export class SignUpPageComponent implements OnInit {
 
 
   async SignUp(): Promise<any> {/*Recupera el ultimo ID creado, recibe datos en formularios y añade a Base de Datos */
-    
+    let flag = 0;
     try {
       const users = await this.userService.getUsers();
 
@@ -39,6 +39,9 @@ export class SignUpPageComponent implements OnInit {
         for (let user of users) {
 
           this.id = user.id;
+          if(user.Email == this.formLogin.controls['Email'].value){
+            flag = 1;
+          }
         
         }      
       }
@@ -58,11 +61,12 @@ export class SignUpPageComponent implements OnInit {
       Country: this.formLogin.controls['Country'].value,
       FavMovies: [] 
     }
-  
+  if(flag == 0){
     this.userService.add(user);
-
     this.userService.addCountry(this.formLogin.controls['Country'].value);
-
+  }else{
+    alert('Mail ya registrado. Intente ingresando otro.');
+  }
   }
 
   getTodayDate(): string {/*Parseo de la fecha para mejor visualizacion */

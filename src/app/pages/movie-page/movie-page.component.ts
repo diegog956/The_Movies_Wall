@@ -55,14 +55,13 @@ export class MoviePageComponent implements OnInit {
     this.newUrl = 'https://moviesdatabase.p.rapidapi.com/titles/' + this.id + '?info=base_info';
     this.loading = true;
     this.apiService.getData(this.newUrl).subscribe(movie => {
-      console.log(movie);
+      
       this.loading = false;
       this.Title = movie.results.titleText.text;
       this.Rating = movie.results.ratingsSummary.aggregateRating;
 
       const numeroFormateado = new Intl.NumberFormat().format(movie.results.ratingsSummary.voteCount);
-      console.log(numeroFormateado);
-
+     
       this.Votes = numeroFormateado;
 
       this.GenreArray = movie.results.genres.genres;
@@ -71,7 +70,7 @@ export class MoviePageComponent implements OnInit {
         this.GenreStats.push(element);
         this.Genre += element.text + ' / ';
       });
-      console.log(this.GenreStats);
+      
       this.Genre = this.Genre.slice(0, -2);
 
       this.ReleaseDate = movie.results.releaseDate.day + '/' + movie.results.releaseDate.month + '/' + movie.results.releaseDate.year;
@@ -183,7 +182,7 @@ export class MoviePageComponent implements OnInit {
 
             this.userService.getComments(this.id).subscribe((commentsResult) => {
               this.commentsArray = commentsResult.comments;
-              console.log('CommentArray:', this.commentsArray);
+              
             });
             this.txtEnviar = 'Enviado ✓';
             this.valorInput = '';
@@ -200,7 +199,7 @@ export class MoviePageComponent implements OnInit {
 
           this.userService.getComments(this.id).subscribe((commentsResult) => {
             this.commentsArray = commentsResult.comments;
-            console.log('CommentArray:', commentsResult);
+         
           });
           this.txtEnviar = 'Enviado ✓'
           this.valorInput = '';
@@ -216,7 +215,7 @@ export class MoviePageComponent implements OnInit {
 
       this.userService.getComments(this.id).subscribe((commentsResult) => {
         this.commentsArray = commentsResult.comments;
-        console.log('CommentArray:', commentsResult);
+        
       });
 
   }
