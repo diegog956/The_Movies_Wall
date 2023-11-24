@@ -36,13 +36,15 @@
 
   grid-area: rightside;
   display: flex;
-  /* justify-content: center; */
+  justify-content: center;
+  
   min-height: 96vh;
     
 }
 
 .rightside img {
   order: -1;
+  top: 2px;
   width: 438px;
   height: 658px;
   border-radius: 10px;
