@@ -1,4 +1,4 @@
-# TPFinalUTN
+# The Movies Wall (Proyecto Final Universidad Tecnológica Nacional) 
 
 INFORMACION PROVISTA PARA LA CORRECTA EJECUCION DEL PROYECTO.
 
