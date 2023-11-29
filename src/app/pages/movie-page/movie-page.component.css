@@ -277,7 +277,7 @@ border-bottom: solid 2px white;
   width: 100%;
   transform: skew(90deg) translate(-50%, -50%);
   position: absolute;
-  inset: 50%;
+  inset: 100%;
   left: 25%;
   z-index: -1;
   transition: none;

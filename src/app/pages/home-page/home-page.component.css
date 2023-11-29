@@ -211,7 +211,8 @@ h1 {
 .card {
   box-sizing: border-box;
   width: 27.333%;
-  height: 400px;
+  aspect-ratio: 2/3;
+  /* height: 400px; */
   box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
   backdrop-filter: blur(6px);
   text-align: center;
