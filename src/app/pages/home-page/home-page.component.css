@@ -93,11 +93,12 @@ h2 {
 .h3container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
   margin-top: 50px;
   position: relative;
-  align-items: flex-start;
-  margin-left: 26%;
+  align-items: center;
+  margin-left: 16%;
+  margin-right: 16%;
   margin-bottom: 100px;
 }
 
@@ -225,7 +226,7 @@ h1 {
   font-weight: bolder;
   color: black;
   margin: 0;
-  padding: 0;
+  padding: 1px;
   margin-bottom: 5%;
   position: relative;
   margin-right: 2%;
